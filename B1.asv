@@ -1,0 +1,59 @@
+%B1
+
+%% Initialization
+clear
+clc
+close all
+
+load('Lab4_Data.mat');
+
+%% Define constants and axis for signal
+N = 80000;   %80k samples at 32 kHz sample rate = 2.5 second audio clip
+t = [0:1:(N-1)]/(1/N) ;    
+
+%% Convolve with low pass filter
+y1 = conv(xspeech,hLPF2000);
+y1 = y1(1:80000);   %remove irreleavant parts *
+
+%% Debug Low-pass compression
+% figure('Name', "Graph of Audio Waveform's Fourier Spectra after T1");
+% MagSpect(y1);
+% 
+% figure('Name', 'Graph of Audio Waveform after T1');
+% plot(t,xspeech); grid on; axis tight;
+% xlabel('time'); ylabel('Amplitude');
+% 
+% sound(y1,32000);   %Output is serviceble check. Is servicible
+
+%% Create Carrier Signal
+c1 = osc(4000,N); %fundamental frequency of carrier signal 4khz = 4000
+MagSpect(c1);
+
+%% Modulate signal
+y2 = y1 .* c1;
+
+%% Debug modulation. 
+figure('Name', "Graph of Audio Waveform's Fourier Spectra after T2");
+MagSpect(y2);
+
+%% Transmit through tramission band
+
+y3 = conv(y2, hChannel);
+y3 = y3(1:80000);   %*
+figure('Name', "Graph of Audio Waveform's Fourier Spectra after Transmission");
+MagSpect(y3);
+
+%% Reverse modulation
+
+y4 = y3 .* c1;
+figure('Name', "Signa's Fourier Spectra after de-modulation");
+MagSpect(y4);
+y4 = y4(1:80000); %**?
+
+%% Remove high frequencies by using Low-Pass filter
+
+y5 = 
+
+
+
+
