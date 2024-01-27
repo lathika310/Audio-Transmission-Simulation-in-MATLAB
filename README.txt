@@ -1,5 +1,5 @@
 This is the final lab for the "ELE532 Signals and Systems I" 5th semester course for the
-Bachelors in Computer Engineering Undergraduate Degree at Toronto Metropolitan University (formerly known as Ryerson).
+Bachelors in Computer Engineering Undergraduate Degree at Toronto Metropolitan University (formerly known as Ryerson). Completed Dec. 3rd 2023.
 
 The final part of the project is the simulated singal transmission. 
 The code is implemented in the B1.m matlab script file.
